@@ -18,11 +18,13 @@ public class CharacterMOvement : MonoBehaviour
     public float fallGravityScale = 8;
 
     Animator animator;
+    SpriteRenderer spr;
     // Start wywo³ujemy raz, na pocz¹tku uruchomienia skryptu
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+       spr = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -32,14 +34,30 @@ public class CharacterMOvement : MonoBehaviour
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, 0.0f);
         float speed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
         transform.position += moveDirection * speed * Time.deltaTime;
-        if (moveDirection.x != 0)
+ 
+        if(moveDirection.x != 0 )
         {
             animator.SetBool("isRunning", true);
-
+            if (moveDirection.x < 0)
+            {
+                spr.flipX = true;
+            }
+            else
+            {
+                spr.flipX = false;
+            }
         }
         else
         {
             animator.SetBool("isRunning", false);
+        }
+        if(Input.GetKey(KeyCode.E))
+        {
+            animator.SetBool("isAttacking", true);
+        }
+        else
+        {
+            animator.SetBool("isAttacking", false);
         }
         bool isJumping = Input.GetKey(KeyCode.Space);
 

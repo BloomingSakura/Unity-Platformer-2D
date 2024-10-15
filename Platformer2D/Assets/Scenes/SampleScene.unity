@@ -4927,7 +4927,7 @@ MonoBehaviour:
   sprintSpeed: 10
   isGrounded: 0
   jumpHeight: 2
-  boxSize: {x: 0.51, y: 0.18}
+  boxSize: {x: 0.51, y: 0.12}
   castDistance: 0.42
   groundLayer:
     serializedVersion: 2
