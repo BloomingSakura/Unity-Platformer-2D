@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterMOvement : MonoBehaviour
 {
@@ -96,6 +97,9 @@ public class CharacterMOvement : MonoBehaviour
         Gizmos.DrawWireCube(transform.position + Vector3.down * castDistance, boxSize);
     }
 
-
-
+    public void DeadPlayer()
+    {
+        Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
