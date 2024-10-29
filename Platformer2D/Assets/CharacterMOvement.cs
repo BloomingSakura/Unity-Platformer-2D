@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,16 +19,24 @@ public class CharacterMOvement : MonoBehaviour
     public float graviyScale = 2;
     public float fallGravityScale = 8;
 
+
     Animator animator;
     SpriteRenderer spr;
+
+    public int score;
+    public TextMeshProUGUI points;
     // Start wywo³ujemy raz, na pocz¹tku uruchomienia skryptu
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
        spr = GetComponent<SpriteRenderer>();
+        score = 0;
     }
-
+    private void Update()
+    {
+        points.text = $"Points: {score}";
+    }
     void FixedUpdate()
     {
         IsGrounded();
